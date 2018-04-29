@@ -70,7 +70,7 @@
         UPDATE news SET hits=#{hits} WHERE id=#{id};
     </update>
 
-    <select id="findTypeByNews" resultType="java.lang.String" parameterType="map">
+    <select id="findTypeByNewsd" resultType="java.lang.String" parameterType="map">
 
         SELECT type.type TYPE FROM TYPE,news WHERE news.id=#{id} and type.id=#{type}
     </select>
