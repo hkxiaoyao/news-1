@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>账号注册</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="../../css/font-awesome.css" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="../../css/loginstyle.css" rel="stylesheet">
+    <link href="../../css/style-responsive.css" rel="stylesheet">
+	  <script src="../../js/jquery.js"></script>
+	  <script src="../../js/jquery.validate.min.js"></script>
+	  <script src="../../js/messages_zh.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	  <style>
+		  .error{
+			  color:red;
+		  }
+
+	  </style>
+  </head>
+  <script>
+      $(function () {
+          $("#yanzhnegForm").validate({
+              errorPlacement: function (error, element) {
+                  // $("#labenl").html(error);
+                  $("#yanzhnegForm").find("span[error='"+element.attr("id")+"']").append(error);
+
+                  // error.appendTo(element.parent());
+              },
+              errorElement:"span",
+              rules:{
+                  username:{
+                      required:true,
+                      minlength:2,
+                      maxlength:10
+                  },
+                  password:{
+                      required:true
+                  },
+				  email:{
+                      required:true
+				  },
+				  validate:{
+                      required:true
+				  }
+              },
+              messages:{
+                  username:{
+                      required:"请输入账号",
+                      minlength:"账号长度必须大于2",
+                      maxlength:"账号长度必须小于10"
+                  },
+                  password:{
+                      required:"请输入密码"
+                  },
+                  email:{
+                      required:"请输入您的邮箱"
+                  },
+                  validate:{
+                      required:"请输入验证码"
+                  },
+                  success: function(span) {
+                      // set &nbsp; as text for IE
+                      //  label.html("&nbsp;").addClass("checked");
+                      //label.addClass("valid").text("Ok!")
+                      span.html("ok");
+                      // span.text("ok");
+                  }
+                  // success: "valid"
+
+              }
+          });
+      });
+  </script>
+  <body>
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+<div>
+
+	  <div id="login-page" >
+	  	<div class="container">
+	  	
+		      <form class="form-login" id="yanzhnegForm" action="index.html" >
+		        <h2 class="form-login-heading">账号注册</h2>
+		        <div class="login-wrap">
+		            <input type="text" id="username" name="username" class="form-control" placeholder="新用户名" autofocus>
+					<span error="username" ></span>
+		            <br/>
+		            <input type="password" name="password" id="password" class="form-control" placeholder="密码">
+					<span error="password" ></span>
+					<br/>
+					<input type="email" name="email" id="email" class="form-control" placeholder="输入有效邮箱">
+					<span error="email" ></span>
+					<br/>
+
+					<!--<div class="centered">-->
+					<!--<input type="radio"  name="sex" value="男" checked="checked">男-->
+					<!--<input type="radio"   name="sex" value="女">女-->
+					<!--</div>-->
+
+					<div class="form-inline">
+					<input type="text" name="validate" id="validate" style="width: 50%;float: left;" class="form-control" placeholder="验证码">
+					<img src="../../img/loginback.jpeg" style="width: 40% ;height: 34px; border: 1px;float: right;"/>
+					</div><br/><br/>
+					<span error="validate" ></span><br/>
+
+		            <button class="btn btn-theme btn-block" href="index.html" type="submit">注册账号</button>
+		            <hr>
+		            
+
+					<!--<p>或者 您可以选择下面第三方账户登陆本网站</p>-->
+		                <!--<button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>-->
+		                <!--<button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>-->
+		            <!--</div>-->
+		            <div class="registration">
+		               您已经有账号?<br/><br/>
+		                <a class="" href="login.html">
+		                    点击这里登陆账号
+		                </a>
+		            </div>
+		
+		        </div>
+		
+		
+		      </form>	  	
+	  	
+	  	</div>
+	  </div>
+</div>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="../../js/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("../../img/loginback.jpeg", {speed: 500});
+    </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.i1314i.news.mapper.LinkMapper">
+
+
+    <select id="selectLinks" resultType="com.i1314i.news.po.Link">
+        SELECT * from link;
+    </select>
+
+    <select id="findLinkById" parameterType="java.lang.Integer" resultType="com.i1314i.news.po.Link">
+        SELECT * FROM link WHERE  lid=#{lid};
+    </select>
+
+    <insert id="insertLink" parameterType="com.i1314i.news.po.Link">
+        INSERT INTO link (name,url) VALUES (#{name},#{url});
+    </insert>
+
+    <update id="updateLink" parameterType="com.i1314i.news.po.Link">
+        UPDATE link SET name=#{name} ,url=#{url} WHERE lid=#{lid};
+    </update>
+
+    <delete id="deleteLinkById" parameterType="java.lang.Integer">
+        DELETE  FROM link where lid=#{lid};
+    </delete>
+
+
+</mapper>

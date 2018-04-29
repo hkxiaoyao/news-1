@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.i1314i.news.mapper.NewsMapper">
+        <select id="findNewByType" parameterType="java.lang.Integer" resultType="com.i1314i.news.po.News">
+              SELECT * FROM news WHERE type=#{type}
+        </select>
+
+        <select id="findNewsByName" resultType="com.i1314i.news.po.News" parameterType="java.lang.String">
+                SELECT * FROM news WHERE type=#{name}
+        </select>
+
+    <select id="findAllCountType" resultType="java.lang.Integer">
+        SELECT count(*) FROM TYPE
+    </select>
+
+        <select id="findAllType" resultType="com.i1314i.news.po.Type" >
+            SELECT * FROM type;
+        </select>
+
+        <select id="findNewsById" resultType="com.i1314i.news.po.News" parameterType="java.lang.Integer">
+            SELECT * FROM news WHERE id=#{id}
+        </select>
+
+    <select id="findByHot" resultType="com.i1314i.news.po.News" parameterType="map">
+        SELECT * FROM news  WHERE hot=1 ORDER BY id desc limit #{currIndex} , #{pageSize};
+    </select>
+        <select id="findTypeById" resultType="java.lang.String" parameterType="java.lang.Integer">
+            SELECT type FROM  type WHERE id=#{id};
+        </select>
+
+    <select id="findAll" resultType="com.i1314i.news.po.News" parameterType="map">
+        SELECT * FROM news  WHERE  TYPE =#{type} ORDER BY id desc limit #{currIndex} , #{pageSize};
+    </select>
+
+    <select id="findAlls" resultType="com.i1314i.news.po.News" parameterType="map">
+        SELECT * FROM news ORDER BY id desc limit #{currIndex} , #{pageSize} ;
+    </select>
+    <select id="findAllCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT count(*) FROM news WHERE  TYPE =#{type};
+
+    </select>
+
+    <delete id="deleteNews" parameterType="java.lang.Integer">
+        DELETE FROM  news WHERE id=#{id};
+    </delete>
+
+    <select id="findCountNews" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM news;
+    </select>
+
+    <select id="findByHits" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT hits FROM news WHERE id=#{id} ORDER BY id desc  ;
+    </select>
+
+    <select id="findAllTimes" resultType="com.i1314i.news.po.News" parameterType="map">
+        SELECT * FROM news   ORDER BY time desc limit #{currIndex} , #{pageSize};
+    </select>
+
+        <insert id="insertNews" parameterType="com.i1314i.news.po.News" >
+            INSERT INTO news (content,title,writer,type,hot,hits,froms,dates)
+            VALUES (#{content},#{title},#{writer},#{type},#{hot},#{hits},#{froms},#{dates});
+        </insert>
+
+        <update id="updateNews" parameterType="com.i1314i.news.po.News">
+            UPDATE news SET content=#{content},title=#{title},writer=#{writer},type=#{type},hot=#{hot},time=#{time},hits=#{hits},froms=#{froms},dates=#{dates} WHERE id=#{id};
+        </update>
+
+    <update id="updateHits" parameterType="map">
+        UPDATE news SET hits=#{hits} WHERE id=#{id};
+    </update>
+
+    <select id="findTypeByNews" resultType="java.lang.String" parameterType="map">
+
+        SELECT type.type TYPE FROM TYPE,news WHERE news.id=#{id} and type.id=#{type}
+    </select>
+
+</mapper>
